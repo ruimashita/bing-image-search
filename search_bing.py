@@ -8,6 +8,7 @@ OUTPUT_IMAGE_DIR = "download/images"
 MS_KEY = ''
 START = 0
 END = 1000
+KEYWORD = '焼き魚'
 
 
 def bing_search(query, skip=0):
@@ -51,4 +52,4 @@ def bing_search(query, skip=0):
 
 if __name__ == '__main__':
     for skip in range(START, END, 50):
-        bing_search('ラーメン', skip)
+        bing_search(KEYWORD, skip)
