@@ -1,17 +1,31 @@
 # coding:utf-8
+import csv
+import glob
 import os
 import requests
-import csv
 
 OUTPUT_CSV = "download/images.csv"
 OUTPUT_IMAGE_DIR = "download/images"
 MS_KEY = ''
 START = 0
 END = 1000
-KEYWORD = '焼き魚'
+KEYWORD = 'ハンバーグ'
+
+def clean_dir_csv():
+    if os.path.exists(OUTPUT_CSV):
+        os.remove(OUTPUT_CSV)
+
+    if os.path.exists(OUTPUT_IMAGE_DIR):
+        files = glob.glob(OUTPUT_IMAGE_DIR + '/*.jpg')
+        for path in files:
+            os.remove(path)
+    else:
+        os.mkdir(OUTPUT_IMAGE_DIR)
 
 
 def bing_search(query, skip=0):
+    clean_dir_csv()
+
     bing_url = 'https://api.datamarket.azure.com/Bing/Search/Image'
 
     payload = {
@@ -36,7 +50,7 @@ def bing_search(query, skip=0):
             image_url = item['MediaUrl']
             root, ext = os.path.splitext(image_url)
             if ext.lower() == '.jpg':
-                print image_url
+                print "." # image_url
                 try:
                     r = requests.get(image_url)
                     if r.status_code == 200:
