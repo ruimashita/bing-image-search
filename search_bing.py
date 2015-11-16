@@ -50,7 +50,7 @@ def bing_search(query, skip=0):
             image_url = item['MediaUrl']
             root, ext = os.path.splitext(image_url)
             if ext.lower() == '.jpg':
-                print "." # image_url
+                print "now downloading ..."
                 try:
                     r = requests.get(image_url)
                     if r.status_code == 200:
@@ -67,3 +67,4 @@ def bing_search(query, skip=0):
 if __name__ == '__main__':
     for skip in range(START, END, 50):
         bing_search(KEYWORD, skip)
+    print("download complete")
