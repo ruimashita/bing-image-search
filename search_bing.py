@@ -24,8 +24,6 @@ def clean_dir_csv():
 
 
 def bing_search(query, skip=0):
-    clean_dir_csv()
-
     bing_url = 'https://api.datamarket.azure.com/Bing/Search/Image'
 
     payload = {
@@ -65,6 +63,7 @@ def bing_search(query, skip=0):
             count += 1
 
 if __name__ == '__main__':
+    clean_dir_csv()
     for skip in range(START, END, 50):
         bing_search(KEYWORD, skip)
     print("download complete")
