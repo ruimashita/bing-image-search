@@ -6,7 +6,7 @@ import requests
 
 OUTPUT_CSV = "download/images.csv"
 OUTPUT_IMAGE_DIR = "download/images"
-MS_KEY = ''
+MS_KEY = '07C0F+LSoFm6J3D/gm8yXnWqVQhsFG1Shrao4moKBN8'
 SKIP = 0
 NUMBER = 1000
 KEYWORD = ''
@@ -20,7 +20,7 @@ def clean_dir_csv():
         for path in files:
             os.remove(path)
     else:
-        os.mkdir(OUTPUT_IMAGE_DIR)
+        os.makedirs(OUTPUT_IMAGE_DIR)
 
 
 def get_bing_images(query, skip=0):
